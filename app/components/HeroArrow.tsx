@@ -5,6 +5,10 @@ import React, { useEffect } from 'react'
 const HeroArrow = () => {
 
     useEffect(() => {
+
+        // Window scroll to top
+        window.scrollTo(0, 0);
+
         setTimeout(() => {
 			const firstText = document.querySelector(".animate-fadeIn") as HTMLElement;
 			firstText?.classList.remove("animate-fadeIn");

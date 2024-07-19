@@ -69,7 +69,7 @@ const Carousel = ({ items }: CarouselProps) => {
 
   return (
     <>
-      <div className="carousel-container flex gap-16 overflow-x-scroll transition-all duration-500 ease-in-out" ref={carouselRef}>
+      <div className="relative carousel-container flex gap-16 overflow-x-scroll overflow-y-hidden transition-all duration-500 ease-in-out" ref={carouselRef}>
         {items.map((item, index) => (
           <ServicesCard key={index} title={item.title} description={item.description} imageUrl={item.imageUrl} />
         ))}
