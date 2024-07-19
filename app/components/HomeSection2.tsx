@@ -1,5 +1,4 @@
 import React from 'react'
-import ServicesCard from './ServicesCard'
 import Carousel from './Carousel'
 
 const HomeSection2 = () => {

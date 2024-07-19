@@ -16,6 +16,7 @@ const Carousel = ({ items }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const scrollToIndex = (index: number) => {
+    // Need to fix this
     if (carouselRef.current) {
       const cardWidth = carouselRef.current.scrollWidth / items.length;
       // const itemsPerPage = 3;
@@ -39,6 +40,7 @@ const Carousel = ({ items }: CarouselProps) => {
     }
 
     const handleScroll = () => {
+      // Need to fix this
       if (carouselRef.current) {
         const cardWidth = carouselRef.current.scrollWidth / items.length;
         const itemsPerPage = 3;
@@ -89,11 +91,13 @@ const Carousel = ({ items }: CarouselProps) => {
             onClick={() => scrollToIndex(3)}
           />
       </div>
+      {/* Need to fix this */}
       <div className="absolute left-0 top-[50%] hover:cursor-pointer" onClick={() => scrollToIndex(0)}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
       </div>
+      {/* Need to fix this */}
       <div className="absolute right-0 top-[50%] hover:cursor-pointer" onClick={() => scrollToIndex(3)}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
