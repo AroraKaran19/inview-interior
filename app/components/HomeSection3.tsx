@@ -6,7 +6,7 @@ const HomeSection3 = () => {
 		<>
 			<section id='how-it-happens' className='home-third-section flex flex-col justify-center items-center w-full'>
 				<h1 className='section-heading'>How It Happens</h1>
-				<p className='section-sub-heading w-[35%] sm:w-full text-center'>We help you to get the best possible solution for your business. Here's how we do it:</p>
+				<p className='section-sub-heading w-[35%] sm:w-full text-center'>We help you to get the best possible solution for your business. Here&apos;s how we do it:</p>
 				<div className="home-third-section-content flex w-full sm:flex-col">
 
 					<div className="section-card-container w-[55%] sm:w-full sm:flex sm:justify-center sm:items-center">
