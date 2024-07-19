@@ -12,13 +12,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly <{children: React.ReactNode;}>) {
   
-  const is404Page = children === 'NotFound';
-  console.log(children);
-
   return (
     <html lang="en">
       <body className={inter.className}>
-        {!is404Page && <Navbar />}
+        <Navbar />
         {children}
       </body>
     </html>

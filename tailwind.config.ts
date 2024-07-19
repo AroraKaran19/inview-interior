@@ -57,6 +57,9 @@ const config: Config = {
         jumpUpDown: "jumpUpDown 1s ease-in-out infinite",
         fadeIn: "fadeIn 1s 2.5s ease-in-out forwards",
       },
+      gridTemplateColumns: {
+        '5_minmax(300px,_1fr)': 'repeat(5, 1fr)',
+      },
     },
   },
   plugins: [],

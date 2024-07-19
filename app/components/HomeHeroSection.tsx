@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroArrow from './HeroArrow'
+import "../HomePage.css";
 
 const HomeHeroSection = () => {
 	return (

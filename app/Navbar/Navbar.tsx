@@ -1,6 +1,7 @@
 import React from 'react'
 import NavLinks from './NavLinks'
 import ContactBtn from '../components/ContactBtn'
+import "./Navbar.css";
 
 const Navbar = () => {
 
