@@ -7,26 +7,47 @@ const HomeSection2 = () => {
 		{
 			title: "Residential Designing",
 			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "residential-designing",
 		},
 		{
 			title: "Commercial Designing",
 			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "commercial-designing",
 		},
 		{
 			title: "Interior Designing",
 			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "interior-designing",
 		},
 		{
 			title: "Exterior Designing",
 			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "exterior-designing",
 		},
 		{
 			title: "Landscape Designing",
 			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "landscape-designing",
 		},
 		{
 			title: "Furniture Designing",
 			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "furniture-designing",
+		},
+		{
+			title: "Exterior Designing",
+			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "exterior-designing",
+		},
+		{
+			title: "Landscape Designing",
+			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "landscape-designing",
+		},
+		{
+			title: "Furniture Designing",
+			imageUrl: "/HomeHeroSection1.png",
+			redirectUrl: "furniture-designing",
 		}
 	]
 

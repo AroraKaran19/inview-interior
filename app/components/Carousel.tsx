@@ -7,6 +7,7 @@ interface CarouselProps {
     title: string,
     description?: string
     imageUrl?: string
+    redirectUrl?: string
   }[]
 }
 
@@ -14,24 +15,36 @@ const Carousel = ({ items }: CarouselProps) => {
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [width, setWidth] = useState(0);
+  const [scrollActive, setScrollActive] = useState<Boolean>(false);
+
+  useEffect(() => {
+    // This is used to set the width of the window
+    setWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const scrollToIndex = (index: number) => {
-    // Need to fix this
-    if (carouselRef.current) {
+    setScrollActive(true);
+    if (carouselRef.current && index >= 0 && index < items.length) {
       const cardWidth = carouselRef.current.scrollWidth / items.length;
-      // const itemsPerPage = 3;
-      // const newIndex = index * itemsPerPage;
-      const newIndex = index;
       carouselRef.current.scrollTo({
-        left: cardWidth * newIndex,
+        left: cardWidth * index,
         behavior: 'smooth'
       });
       setCurrentIndex(index);
+      setScrollActive(false);
     }
   };
 
   useEffect(() => {
-
+    // This is used to scroll to the first index when the component is mounted
     if (carouselRef.current) {
       carouselRef.current.scrollTo({
         left: 0,
@@ -40,11 +53,10 @@ const Carousel = ({ items }: CarouselProps) => {
     }
 
     const handleScroll = () => {
-      // Need to fix this
+      // This is used to set the current index of the carousel when the user scrolls (Only for Mobile and Tablet)
       if (carouselRef.current) {
         const cardWidth = carouselRef.current.scrollWidth / items.length;
-        const itemsPerPage = 3;
-        const index = Math.floor(carouselRef.current.scrollLeft / (cardWidth * itemsPerPage));
+        const index = Math.round(carouselRef.current.scrollLeft / cardWidth);
         setCurrentIndex(index);
       }
     };
@@ -58,47 +70,54 @@ const Carousel = ({ items }: CarouselProps) => {
     }
   }, [items.length]);
 
-  // const breakPoints = [
-  //   { width: 1, itemsToShow: 1 },
-  //   { width: 550, itemsToShow: 2 },
-  //   { width: 768, itemsToShow: 3 },
-  //   { width: 1200, itemsToShow: 4 },
-  // ];
+  const handleBreakPoints = () => {
+    // This helps in handling the breakpoints for the carousel 1 means mobile, 2 means tablet, 3 means desktop, 4 means large desktop
+    if (width < 550 && width > 1) {
+      return 1;
+    } else if (width < 1200) {
+      return 2;
+    } else if (width > 1200) {
+      return 3;
+    } else {
+      return 4;
+    }
+  }
 
-  // const dotCount = Math.ceil(items.length / 3);
+  const dotCount = () => {
+    const br = handleBreakPoints();
+    let itemsPerPage = 0;
+    if (br === 1 || br === 2) {
+      itemsPerPage = 1;
+    } else {
+      itemsPerPage = 3;
+    }
+    return items.length/itemsPerPage;
+  }
 
   return (
     <>
-      <div className="relative carousel-container flex gap-16 overflow-x-scroll overflow-y-hidden transition-all duration-500 ease-in-out" ref={carouselRef}>
+      <div className="relative carousel-container flex gap-16 overflow-x-scroll overflow-y-hidden transition-all duration-500 ease-in-out p-5" ref={carouselRef}>
         {items.map((item, index) => (
-          <ServicesCard key={index} title={item.title} description={item.description} imageUrl={item.imageUrl} />
+          <ServicesCard key={index} title={item.title} description={item.description} imageUrl={item.imageUrl} redirectUrl={item.redirectUrl} />
         ))}
       </div>
       <div className="dots-container flex justify-center mt-4">
-        {/* {Array.from({ length: dotCount }).map((_, index) => (
+        {Array.from({ length: dotCount() }).map((_, index) => (
           <button
             key={index}
-            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${index === currentIndex ? 'bg-black' : 'bg-gray-400'}`}
-            onClick={() => scrollToIndex(index)}
+            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${handleBreakPoints() === 1 || handleBreakPoints() === 2 ? (currentIndex === index || currentIndex === index+1 || currentIndex === index+2 ? 'bg-[#000]' : 'bg-[#D4D4D4]') : (currentIndex === index * 3 ? 'bg-[#000]' : 'bg-[#D4D4D4]')}` }
+            onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(index)} else {scrollToIndex(index * 3)}}}
           />
-        ))} */}
-        <button
-            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${0 === currentIndex ? 'bg-black' : 'bg-gray-400'}`}
-            onClick={() => scrollToIndex(0)}
-          />
-          <button
-            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${1 === currentIndex ? 'bg-black' : 'bg-gray-400'}`}
-            onClick={() => scrollToIndex(3)}
-          />
+        ))}
       </div>
       {/* Need to fix this */}
-      <div className="absolute left-0 top-[50%] hover:cursor-pointer" onClick={() => scrollToIndex(0)}>
+      <div className="absolute left-0 top-[50%] hover:cursor-pointer" onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(currentIndex-1)} else {scrollToIndex(currentIndex-3)}}}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
       </div>
       {/* Need to fix this */}
-      <div className="absolute right-0 top-[50%] hover:cursor-pointer" onClick={() => scrollToIndex(3)}>
+      <div className="absolute right-0 top-[50%] hover:cursor-pointer" onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(currentIndex+1)} else {scrollToIndex(currentIndex+3)}}}>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
           <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
         </svg>
