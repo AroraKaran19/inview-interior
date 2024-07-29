@@ -105,7 +105,7 @@ const Carousel = ({ items }: CarouselProps) => {
         {Array.from({ length: dotCount() }).map((_, index) => (
           <button
             key={index}
-            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${handleBreakPoints() === 1 || handleBreakPoints() === 2 ? (currentIndex === index || currentIndex === index+1 || currentIndex === index+2 ? 'bg-[#000]' : 'bg-[#D4D4D4]') : (currentIndex === index * 3 ? 'bg-[#000]' : 'bg-[#D4D4D4]')}` }
+            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${handleBreakPoints() === 1 || handleBreakPoints() === 2 ? (currentIndex === index ? 'bg-[#000]' : 'bg-[#D4D4D4]') : (currentIndex === index * 3 ? 'bg-[#000]' : 'bg-[#D4D4D4]')}` }
             onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(index)} else {scrollToIndex(index * 3)}}}
           />
         ))}
