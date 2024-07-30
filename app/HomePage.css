@@ -161,6 +161,10 @@ section.home-second-section .home-second-section-content {
     padding-top: clamp(0rem, 5vw, 3.5rem);
 }
 
+section.home-second-section .home-second-section-content .arrows {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
 section.home-second-section .home-second-section-content .carousel-container {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;

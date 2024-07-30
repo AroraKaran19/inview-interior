@@ -91,36 +91,36 @@ const Carousel = ({ items }: CarouselProps) => {
     } else {
       itemsPerPage = 3;
     }
-    return items.length/itemsPerPage;
+    return items.length / itemsPerPage;
   }
 
   return (
     <>
-      <div className="relative carousel-container flex gap-16 overflow-x-scroll overflow-y-hidden transition-all duration-500 ease-in-out p-5" ref={carouselRef}>
-        {items.map((item, index) => (
-          <ServicesCard key={index} title={item.title} description={item.description} imageUrl={item.imageUrl} redirectUrl={item.redirectUrl} />
-        ))}
+      <div className="carousel-content relative h-full w-full">
+        <div className="relative carousel-container flex gap-16 overflow-x-scroll overflow-y-hidden transition-all duration-500 ease-in-out p-5" ref={carouselRef}>
+          {items.map((item, index) => (
+            <ServicesCard key={index} title={item.title} description={item.description} imageUrl={item.imageUrl} redirectUrl={item.redirectUrl} />
+          ))}
+        </div>
+        <div className="arrows absolute left-[-2%] top-0 hover:cursor-pointer py-5 h-full" onClick={() => { if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(currentIndex - 1) } else { scrollToIndex(currentIndex - 3) } }}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full size-6 flex justify-center items-center">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </div>
+        <div className="arrows absolute right-[-2%] top-0 hover:cursor-pointer py-5 h-full" onClick={() => { if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(currentIndex + 1) } else { scrollToIndex(currentIndex + 3) } }}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full size-6 flex justify-center items-center">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+          </svg>
+        </div>
       </div>
       <div className="dots-container flex justify-center mt-4">
         {Array.from({ length: dotCount() }).map((_, index) => (
           <button
             key={index}
-            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${handleBreakPoints() === 1 || handleBreakPoints() === 2 ? (currentIndex === index ? 'bg-[#000]' : 'bg-[#D4D4D4]') : (currentIndex === index * 3 ? 'bg-[#000]' : 'bg-[#D4D4D4]')}` }
-            onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(index)} else {scrollToIndex(index * 3)}}}
+            className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${handleBreakPoints() === 1 || handleBreakPoints() === 2 ? (currentIndex === index ? 'bg-[#000]' : 'bg-[#D4D4D4]') : (currentIndex === index * 3 ? 'bg-[#000]' : 'bg-[#D4D4D4]')}`}
+            onClick={() => { if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(index) } else { scrollToIndex(index * 3) } }}
           />
         ))}
-      </div>
-      {/* Need to fix this */}
-      <div className="absolute left-0 top-[50%] hover:cursor-pointer" onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(currentIndex-1)} else {scrollToIndex(currentIndex-3)}}}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-        </svg>
-      </div>
-      {/* Need to fix this */}
-      <div className="absolute right-0 top-[50%] hover:cursor-pointer" onClick={() => {if (handleBreakPoints() === 1 || handleBreakPoints() === 2) {scrollToIndex(currentIndex+1)} else {scrollToIndex(currentIndex+3)}}}>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-          <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-        </svg>
       </div>
     </>
   )
