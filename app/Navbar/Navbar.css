@@ -1,16 +1,64 @@
 /* Navbar */
+
+.navbar {
+    position: relative;
+}
+
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .navbar .logo-box {
     padding-left: clamp(0rem, 5vw, 1.5rem);
     padding-top: clamp(0rem, 5vw, 1.87rem);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    animation: slideFromLeft 0.5s 2.5s ease-in-out forwards;
 }
 
 .navbar .logo-box img {
     height: clamp(2rem, 5vw, 3.75rem);
 }
 
+@keyframes slideFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.navbar .menu-btn {
+    padding-right: clamp(0rem, 5vw, 1.5rem);
+    padding-top: clamp(0rem, 5vw, 1.87rem);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    animation: slideFromRight 0.5s 2.5s ease-in-out forwards;
+}
+
+.navbar .menu-btn svg {
+    height: 2rem;
+    cursor: pointer;
+}
+
 .navbar .contact-btn {
     padding-right: clamp(0rem, 5vw, 2rem);
     padding-top: clamp(0rem, 5vw, 2.12rem);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    animation: slideFromRight 0.5s 2.5s ease-in-out forwards;
 }
 
 .navbar .contact-btn a {
@@ -31,9 +79,24 @@
     fill: #303030;
 }
 
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .navbar .nav-links {
     gap: clamp(0rem, 5vw, 3.37rem);
     padding-top: clamp(0rem, 5vw, 2.5rem);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+    animation: slideDown 0.5s 2.7s ease-in-out forwards;
 }
 
 .navbar .nav-links a {
@@ -47,4 +110,31 @@
 .navbar .nav-links a.active {
     color: #303030;
     font-weight: 600;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 1200px) {
+    .navbar::after {
+        content: '';
+        display: block;
+        width: 95%;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        margin: 0 auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        animation: fadeIn 0.5s 2.7s ease-in-out forwards;
+    }
 }

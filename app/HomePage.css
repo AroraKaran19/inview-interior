@@ -1,7 +1,7 @@
 /* Home Page */
 
 .home-page {
-    gap: clamp(5rem, 5vw, 10.125rem);
+    gap: clamp(3rem, 5vw, 10.125rem);
 }
 
 /* Hero Section */
@@ -82,7 +82,7 @@ section.home-hero-section .hero-text {
 }
 
 section.home-hero-section .hero-text .head-text h1 {
-    font-size: clamp(0rem, 5vw, 5rem);
+    font-size: clamp(1.5rem, 5vw, 5rem);
     font-family: "Fixel Bold", sans-serif;
     font-weight: 700;
     color: #303030;
@@ -118,7 +118,6 @@ section.home-hero-section .hero-text .head-text h1 {
 }
 
 section.home-hero-section .hero-text .sub-text {
-    padding-top: clamp(0rem, 5vw, 1.25rem);
     font-size: clamp(0rem, 5vw, 1.5rem);
     font-family: 'Inter', sans-serif;
     font-weight: 500;
@@ -126,6 +125,20 @@ section.home-hero-section .hero-text .sub-text {
     opacity: 0;
     transition: all 0.3s ease-in-out;
     animation: fade-in 0.6s 2s ease-in-out forwards;
+}
+
+section.home-hero-section .hero-text .hero-sm-images img {
+    height: clamp(10rem, 30vw, 10rem);
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+section.home-hero-section .hero-text .hero-sm-images img:nth-child(1) {
+    animation: appearFromLeft 0.5s 2.5s ease-in-out forwards;
+}
+
+section.home-hero-section .hero-text .hero-sm-images img:nth-child(2) {
+    animation: appearFromRight 0.5s 2.5s ease-in-out forwards;
 }
 
 @keyframes jump-up-down {
@@ -161,9 +174,9 @@ section.home-second-section .home-second-section-content {
     padding-top: clamp(0rem, 5vw, 3.5rem);
 }
 
-section.home-second-section .home-second-section-content .arrows {
+/* section.home-second-section .home-second-section-content .arrows {
     background-color: rgba(255, 255, 255, 0.2);
-}
+} */
 
 section.home-second-section .home-second-section-content .carousel-container {
     scroll-snap-type: x mandatory;
@@ -172,7 +185,7 @@ section.home-second-section .home-second-section-content .carousel-container {
 
 section.home-second-section .home-second-section-content .home-section-services-card {
     height: clamp(10rem, 30vw, 37.25rem);
-    padding: clamp(0rem, 5vw, 3rem) clamp(0rem, 5vw, 0rem);
+    padding: clamp(0rem, 5vw, 3rem) clamp(0rem, 5vw, 2rem);
     scroll-snap-align: center;
     box-shadow: inset 0 -150px 100px rgba(0, 0, 0, 0.5);
     transition: all 0.7s ease-in-out;
@@ -231,8 +244,8 @@ section.home-third-section .home-third-section-content {
 }
 
 section.home-third-section .home-third-section-content .section-card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(15rem, 25vw, 28rem), 1fr));
+    display: flex;
+    flex-wrap: wrap;
     gap: clamp(0rem, 5vw, 3.125rem);
     justify-items: center;
     align-items: stretch;
@@ -240,6 +253,7 @@ section.home-third-section .home-third-section-content .section-card-container {
 
 section.home-third-section .home-third-section-content .section-card-container .working-section-card {
     padding: clamp(0rem, 5vw, 3.375rem) clamp(0rem, 5vw, 5.75rem);
+    width: calc(calc(100% - clamp(0rem, 5vw, 3.125rem)) / 2);
     transition: all 0.2s ease-in-out;
 
     .working-section-card-index {
@@ -284,4 +298,28 @@ section.home-third-section .home-third-section-content .image-collage img {
 
 section.home-third-section .home-third-section-content .image-collage .dual-images {
     gap: clamp(0rem, 5vw, 1.875rem);
+}
+
+@media (min-width: 0px) and (max-width: 1200px) {
+    section.home-hero-section {
+        padding-top: 0;
+    }
+
+    section.home-hero-section .hero-text {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .home-section-services-card-title {
+        transform: translateY(0) !important;
+        align-items: end;
+    }
+
+    section.home-third-section .home-third-section-content .section-card-container {
+        padding: clamp(0rem, 5vw, 1.38rem);
+    }
+
+    section.home-third-section .home-third-section-content .section-card-container .working-section-card {
+        width: 100%;
+    }
 }

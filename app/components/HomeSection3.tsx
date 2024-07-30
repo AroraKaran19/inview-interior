@@ -13,7 +13,7 @@ const HomeSection3 = () => {
 						<WorkingCards />
 					</div>
 
-					<div className="image-collage w-[45%] sm:w-full flex">
+					<div className="image-collage w-[45%] sm:hidden flex">
 
 						<img src="/HomeThirdSection1.jpg" alt="Interior 1" className='flex-1 w-full h-full rounded-3xl' />
 

@@ -30,13 +30,20 @@
     font-family: "Fixel Bold", sans-serif;
     font-weight: 700;
     color: #303030;
-    font-size: clamp(0rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     margin-bottom: clamp(0rem, 5vw, 2.5rem);
+    line-height: 1;
 }
 
 .section-sub-heading {
     font-family: "Inter", sans-serif;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.37);
-    font-size: clamp(0rem, 5vw, 1.5rem);
+    font-size: clamp(1rem, 5vw, 1.5rem);
+}
+
+@media (min-width: 321px) and (max-width: 1200px) {
+    .section-heading {
+        font-weight: 500;
+    }
 }

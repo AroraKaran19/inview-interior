@@ -25,9 +25,9 @@ const WorkingCards = () => {
 		<>
 			{cards.map((card, index) => (
 				<div key={index} className="working-section-card flex flex-col justify-center items-center border-[#D4D4D4] border-[1px] rounded-3xl">
-					<h2 className='working-section-card-index leading-none'>{index+1}.</h2>
-					<h2 className='working-section-card-title leading-none'>{card.title}</h2>
-					<p className='working-section-card-description text-center'>{card.description}</p>
+					<h2 className='working-section-card-index leading-none select-none'>{index+1}.</h2>
+					<h2 className='working-section-card-title leading-none select-none'>{card.title}</h2>
+					<p className='working-section-card-description text-center select-none'>{card.description}</p>
 				</div>
 			))}
 		</>
