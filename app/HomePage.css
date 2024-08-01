@@ -163,10 +163,33 @@ section.home-hero-section .hero-text .arrow-down svg {
     opacity: 0;
 }
 
+/* Middle Banner 1 */
+
+.middle-banner-1 {
+    min-height: clamp(15rem, 30vw, 25rem);
+    padding: clamp(0rem, 5vw, 5rem);
+}
+
+.middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content .heading {
+    font-size: clamp(1.5rem, 5vw, 4rem);
+    font-family: "Coolvetica Regular", sans-serif;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.1rem;
+}
+
+.middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content .subheading {
+    font-size: clamp(0rem, 5vw, 1.4rem);
+    font-family: "Coolvetica Regular Italic", sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
 /* Second Section */
 
 section.home-second-section {
     padding: 0 clamp(0rem, 4vw, 5.13rem);
+    transition: all 0.4s ease-in-out;
 }
 
 section.home-second-section .home-second-section-content {
@@ -251,7 +274,7 @@ section.home-third-section .home-third-section-content .section-card-container {
 }
 
 section.home-third-section .home-third-section-content .section-card-container .working-section-card {
-    padding: clamp(0rem, 5vw, 3.375rem) clamp(0rem, 5vw, 5.75rem);
+    padding: clamp(0rem, 4vw, 3.375rem) clamp(0rem, 4vw, 5.75rem);
     width: calc(calc(100% - clamp(0rem, 5vw, 3.125rem)) / 2);
     transition: all 0.2s ease-in-out;
     

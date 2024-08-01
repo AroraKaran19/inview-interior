@@ -3,7 +3,7 @@ import Carousel from './Carousel'
 
 const HomeSection2 = () => {
 
-  const services = [
+	const services = [
 		{
 			title: "Residential Designing",
 			imageUrl: "/HomeHeroSection1.png",
@@ -51,17 +51,17 @@ const HomeSection2 = () => {
 		}
 	]
 
-  return (
-    <>
-      <section id='what-we-provide' className='home-second-section flex flex-col justify-center items-center w-full'>
-        <h1 className='section-heading'>What We Provide</h1>
-        <p className='section-sub-heading w-[35%] sm:w-full text-center'>We provide the best possible solution for your business. Here&apos;s what we provide:</p>
-        <div className="home-second-section-content h-full w-full flex flex-col relative ">
-          <Carousel items={services} autochange={true} />
-        </div>
-      </section>
-    </>
-  )
+	return (
+		<>
+			<section id='what-we-provide' className='home-second-section flex flex-col justify-center items-center w-full'>
+				<h1 className='section-heading'>What We Provide</h1>
+				<p className='section-sub-heading w-[35%] sm:w-full text-center'>We provide the best possible solution for your business. Here&apos;s what we provide:</p>
+				<div className="home-second-section-content h-full w-full flex flex-col relative ">
+					<Carousel items={services} autochange={true} />
+				</div>
+			</section>
+		</>
+	)
 }
 
 export default HomeSection2

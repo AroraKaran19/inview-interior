@@ -18,6 +18,14 @@
     font-family: "Fixel SemiBold";
     src: url("./assets/fonts/FixelText-SemiBold.otf") format("opentype");
 }
+@font-face {
+    font-family: "Coolvetica Regular";
+    src: url("./assets//fonts/coolvetica\ rg.otf") format("opentype");
+}
+@font-face {
+    font-family: "Coolvetica Regular Italic";
+    src: url("./assets//fonts/coolvetica\ rg\ it.otf") format("opentype");
+}
 
 * {
     box-sizing: border-box;
@@ -40,10 +48,4 @@
     font-weight: 400;
     color: rgba(0, 0, 0, 0.37);
     font-size: clamp(1rem, 5vw, 1.5rem);
-}
-
-@media (min-width: 321px) and (max-width: 1200px) {
-    .section-heading {
-        font-weight: 500;
-    }
 }

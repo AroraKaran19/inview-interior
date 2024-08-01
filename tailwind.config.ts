@@ -57,6 +57,9 @@ const config: Config = {
         jumpUpDown: "jumpUpDown 1s ease-in-out infinite",
         fadeIn: "fadeIn 1s 2.5s ease-in-out forwards",
       },
+      backgroundImage: {
+        'banner-1': "linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url('/HomeThirdSection1.jpg');",
+      },
     },
   },
   plugins: [],

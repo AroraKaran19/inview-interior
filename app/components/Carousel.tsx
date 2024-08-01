@@ -20,6 +20,7 @@ const Carousel = ({ items, autochange, interval }: CarouselProps) => {
   const [width, setWidth] = useState(0);
   const [autoInterval, setAutoInterval] = useState(4000); // Default interval is 4 seconds
   let goBack = useRef<boolean>(false);
+  const userStopAuto = useRef<boolean>(false);
 
   useEffect(() => {
     // This is used to set the width of the window
@@ -34,49 +35,51 @@ const Carousel = ({ items, autochange, interval }: CarouselProps) => {
   }, []);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout | null = null;
-    
-    if (autochange) {
-      if (interval) {
-        setAutoInterval(interval);
-      }
-      intervalId = setInterval(() => {
-        const width = window.innerWidth;
-        if (width >= 0 && width < 1200) {
-          if (currentIndex !== items.length - 1 && !goBack.current) {
-            scrollToIndex(currentIndex + 1);
-            if (currentIndex === items.length - 2) {
-              goBack.current = true;
-            }
-          } else {
-            if (currentIndex === 0) {
-              goBack.current = false;
-            }
-            if (goBack) {
-              scrollToIndex(currentIndex - 1);
-            }
-          }
-        } else {
-          if (currentIndex !== items.length - 3 && !goBack.current) {
-            scrollToIndex(currentIndex + 3);
-            if (currentIndex === items.length - 6) {
-              goBack.current = true;
-            }
-          } else {
-            if (currentIndex === 0) {
-              goBack.current = false;
-            }
-            if (goBack) {
-              scrollToIndex(currentIndex - 3);
-            }
-          }
-        }
-      }, autoInterval);
-    }
+    if (!userStopAuto.current) {
+      let intervalId: NodeJS.Timeout | null = null;
 
-    return () => {
-      if (intervalId) clearInterval(intervalId);
-    };
+      if (autochange) {
+        if (interval) {
+          setAutoInterval(interval);
+        }
+        intervalId = setInterval(() => {
+          const width = window.innerWidth;
+          if (width >= 0 && width < 1200) {
+            if (currentIndex !== items.length - 1 && !goBack.current) {
+              scrollToIndex(currentIndex + 1);
+              if (currentIndex === items.length - 2) {
+                goBack.current = true;
+              }
+            } else {
+              if (currentIndex === 0) {
+                goBack.current = false;
+              }
+              if (goBack) {
+                scrollToIndex(currentIndex - 1);
+              }
+            }
+          } else {
+            if (currentIndex !== items.length - 3 && !goBack.current) {
+              scrollToIndex(currentIndex + 3);
+              if (currentIndex === items.length - 6) {
+                goBack.current = true;
+              }
+            } else {
+              if (currentIndex === 0) {
+                goBack.current = false;
+              }
+              if (goBack) {
+                scrollToIndex(currentIndex - 3);
+              }
+            }
+          }
+        }, autoInterval);
+      }
+
+      return () => {
+        if (intervalId) clearInterval(intervalId);
+      };
+    }
   }, [currentIndex, autochange, autoInterval]);
 
   const scrollToIndex = (index: number) => {
@@ -149,12 +152,12 @@ const Carousel = ({ items, autochange, interval }: CarouselProps) => {
             <ServicesCard key={index} title={item.title} description={item.description} imageUrl={item.imageUrl} redirectUrl={item.redirectUrl} />
           ))}
         </div>
-        <div className="arrows absolute left-[-2%] top-0 hover:cursor-pointer py-5 h-full" onClick={() => { if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(currentIndex - 1) } else { scrollToIndex(currentIndex - 3) } }}>
+        <div className="arrows absolute left-[-2%] top-0 hover:cursor-pointer py-5 h-full" onClick={() => {userStopAuto.current = true; if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(currentIndex - 1) } else { scrollToIndex(currentIndex - 3) } }}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full size-6 flex justify-center items-center">
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
         </div>
-        <div className="arrows absolute right-[-2%] top-0 hover:cursor-pointer py-5 h-full" onClick={() => { if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(currentIndex + 1) } else { scrollToIndex(currentIndex + 3) } }}>
+        <div className="arrows absolute right-[-2%] top-0 hover:cursor-pointer py-5 h-full" onClick={() => {userStopAuto.current = true; if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(currentIndex + 1) } else { scrollToIndex(currentIndex + 3) } }}>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-full size-6 flex justify-center items-center">
             <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
@@ -165,7 +168,7 @@ const Carousel = ({ items, autochange, interval }: CarouselProps) => {
           <button
             key={index}
             className={`dot w-4 h-4 rounded-full mx-2 transition-all ease-in-out duration-150 ${handleBreakPoints() === 1 || handleBreakPoints() === 2 ? (currentIndex === index ? 'bg-[#000]' : 'bg-[#D4D4D4]') : (currentIndex === index * 3 ? 'bg-[#000]' : 'bg-[#D4D4D4]')}`}
-            onClick={() => { if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(index) } else { scrollToIndex(index * 3) } }}
+            onClick={() => {userStopAuto.current = true; if (handleBreakPoints() === 1 || handleBreakPoints() === 2) { scrollToIndex(index) } else { scrollToIndex(index * 3) } }}
           />
         ))}
       </div>
