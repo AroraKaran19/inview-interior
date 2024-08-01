@@ -9,14 +9,17 @@ interface CarouselProps {
     imageUrl?: string
     redirectUrl?: string
   }[]
+  autochange?: boolean
+  interval?: number
 }
 
-const Carousel = ({ items }: CarouselProps) => {
+const Carousel = ({ items, autochange, interval }: CarouselProps) => {
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [width, setWidth] = useState(0);
-  const [scrollActive, setScrollActive] = useState<Boolean>(false);
+  const [autoInterval, setAutoInterval] = useState(4000); // Default interval is 4 seconds
+  let goBack = useRef<boolean>(false);
 
   useEffect(() => {
     // This is used to set the width of the window
@@ -30,8 +33,53 @@ const Carousel = ({ items }: CarouselProps) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    let intervalId: NodeJS.Timeout | null = null;
+    
+    if (autochange) {
+      if (interval) {
+        setAutoInterval(interval);
+      }
+      intervalId = setInterval(() => {
+        const width = window.innerWidth;
+        if (width >= 0 && width < 1200) {
+          if (currentIndex !== items.length - 1 && !goBack.current) {
+            scrollToIndex(currentIndex + 1);
+            if (currentIndex === items.length - 2) {
+              goBack.current = true;
+            }
+          } else {
+            if (currentIndex === 0) {
+              goBack.current = false;
+            }
+            if (goBack) {
+              scrollToIndex(currentIndex - 1);
+            }
+          }
+        } else {
+          if (currentIndex !== items.length - 3 && !goBack.current) {
+            scrollToIndex(currentIndex + 3);
+            if (currentIndex === items.length - 6) {
+              goBack.current = true;
+            }
+          } else {
+            if (currentIndex === 0) {
+              goBack.current = false;
+            }
+            if (goBack) {
+              scrollToIndex(currentIndex - 3);
+            }
+          }
+        }
+      }, autoInterval);
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [currentIndex, autochange, autoInterval]);
+
   const scrollToIndex = (index: number) => {
-    setScrollActive(true);
     if (carouselRef.current && index >= 0 && index < items.length) {
       const cardWidth = carouselRef.current.scrollWidth / items.length;
       carouselRef.current.scrollTo({
@@ -39,7 +87,6 @@ const Carousel = ({ items }: CarouselProps) => {
         behavior: 'smooth'
       });
       setCurrentIndex(index);
-      setScrollActive(false);
     }
   };
 
@@ -72,7 +119,7 @@ const Carousel = ({ items }: CarouselProps) => {
 
   const handleBreakPoints = () => {
     // This helps in handling the breakpoints for the carousel 1 means mobile, 2 means tablet, 3 means desktop, 4 means large desktop
-    if (width < 550 && width > 1) {
+    if (width < 550 && width >= 0) {
       return 1;
     } else if (width < 1200) {
       return 2;

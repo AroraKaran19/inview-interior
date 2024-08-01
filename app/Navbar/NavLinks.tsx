@@ -6,7 +6,6 @@ import React from 'react'
 const NavLinks = () => {
 
 	const currentPath = usePathname();
-	console.log(currentPath);
 
 	const navMenu = [
     { 

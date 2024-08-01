@@ -2,6 +2,20 @@
 
 .navbar {
     position: relative;
+    padding-bottom: clamp(0rem, 5vw, 1.5rem);
+    background-color: #fff;
+    transition: all 0.4s ease-in-out;
+}
+
+.navbar.sticky {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease-in-out;
+    animation: slideDown 0.5s ease-in-out forwards;
 }
 
 @keyframes slideFromLeft {

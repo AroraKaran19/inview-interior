@@ -1,12 +1,33 @@
-import React from 'react'
+"use client";
+import React, { useEffect, useRef, useState } from 'react'
 import NavLinks from './NavLinks'
 import ContactBtn from '../components/ContactBtn'
 import "./Navbar.css";
 
 const Navbar = () => {
 
+  const [isSticky, setIsSticky] = useState<boolean>(false);
+  let lastScrollY = useRef<number>(0);
+
+  const handleScroll = () => {
+    if (window.scrollY > 0 && window.scrollY < lastScrollY.current) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+    lastScrollY.current = window.scrollY;
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener on component unmount
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+
   return (
-    <div className='navbar max-h-[120px] max-w-screen flex sm:pb-4'>
+    <div className={`navbar max-h-[120px] max-w-screen flex sm:pb-4 ${isSticky ? 'sticky' : ''}`}>
 
       <div className="logo-box flex-1">
         <a href="/">
