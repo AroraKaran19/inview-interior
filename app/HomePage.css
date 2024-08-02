@@ -365,4 +365,11 @@ section.home-third-section .home-third-section-content .image-collage .dual-imag
     section.home-third-section .home-third-section-content .section-card-container .working-section-card {
         width: 100%;
     }
+    .middle-banner-1 .middle-banner-1-container .middle-banner-1-sub-container {
+        padding: clamp(0rem, 5vw, 5rem);
+    }
+    .middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content-2 .content-2-item:not(:last-child) {
+        border-bottom: rgba(255, 255, 255, 1) 2px solid;
+        border-right: none;
+    }
 }
