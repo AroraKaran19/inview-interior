@@ -42,8 +42,8 @@ const MiddleBanner_1 = () => {
 
   return (
     <>
-      <div className="middle-banner-background-wrapper bg-banner-1 w-full">
-        <div className="middle-banner-1 bg-fixed bg-no-repeat bg-cover bg-right-bottom w-full flex justify-center items-center backdrop-blur-sm">
+      <div className="middle-banner-background-wrapper bg-banner-1 bg-fixed bg-no-repeat bg-cover bg-right-bottom w-full">
+        <div className="middle-banner-1 w-full flex justify-center items-center backdrop-blur-sm">
           <div className="middle-banner-1-container w-full flex justify-center items-center">
 
             <div className="middle-banner-1-sub-container flex flex-col justify-center items-center gap-10 w-fit bg-white/20 rounded-2xl ">
