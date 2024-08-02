@@ -170,6 +170,7 @@ section.home-hero-section .hero-text .arrow-down svg {
     padding: clamp(0rem, 5vw, 5rem);
 }
 
+
 .middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content .heading {
     font-size: clamp(1.5rem, 5vw, 4rem);
     font-family: "Coolvetica Regular", sans-serif;
@@ -180,9 +181,21 @@ section.home-hero-section .hero-text .arrow-down svg {
 
 .middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content .subheading {
     font-size: clamp(0rem, 5vw, 1.4rem);
-    font-family: "Coolvetica Regular Italic", sans-serif;
+    font-family: "Coolvetica Regular", sans-serif;
     font-weight: 500;
     color: #fff;
+}
+
+.middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content-2 .content-2-item {
+    font-size: clamp(0rem, 5vw, 1.25rem);
+    font-family: "Fixel SemiBold", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    padding: clamp(0rem, 5vw, 1.5rem) clamp(0rem, 5vw, 2rem);
+}
+
+.middle-banner-1 .middle-banner-1-container .middle-banner-1-container-content-2 .content-2-item:not(:last-child) {
+    border-right: rgba(255, 255, 255, 1) 2px solid;
 }
 
 /* Second Section */
@@ -277,7 +290,7 @@ section.home-third-section .home-third-section-content .section-card-container .
     padding: clamp(0rem, 4vw, 3.375rem) clamp(0rem, 4vw, 5.75rem);
     width: calc(calc(100% - clamp(0rem, 5vw, 3.125rem)) / 2);
     transition: all 0.2s ease-in-out;
-    
+
 
     .working-section-card-index {
         font-size: clamp(0rem, 5vw, 2rem);
@@ -301,7 +314,7 @@ section.home-third-section .home-third-section-content .section-card-container .
 section.home-third-section .home-third-section-content .section-card-container .working-section-card:hover {
     transform: translateY(-10px);
     background-color: #0C646D;
-    color: #fff;
+    color: rgb(255, 255, 255);
     cursor: default;
 
     .working-section-card-description {
@@ -321,6 +334,13 @@ section.home-third-section .home-third-section-content .image-collage img {
 
 section.home-third-section .home-third-section-content .image-collage .dual-images {
     gap: clamp(0rem, 5vw, 1.875rem);
+}
+
+/* Middle Banner 2 */
+
+.middle-banner-2 {
+    min-height: clamp(15rem, 30vw, 25rem);
+    padding: clamp(0rem, 5vw, 5rem);
 }
 
 @media (min-width: 0px) and (max-width: 1200px) {

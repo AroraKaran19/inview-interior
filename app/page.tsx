@@ -4,6 +4,7 @@ import HomeSection2 from "./components/HomeSection2";
 import HomeSection3 from "./components/HomeSection3";
 import "./HomePage.css";
 import MiddleBanner_1 from "./components/MiddleBanner_1";
+import MiddleBanner_2 from "./components/MiddleBanner_2";
 
 export default function Home() {
 
@@ -19,6 +20,7 @@ export default function Home() {
         <MiddleBanner_1 />
         <HomeSection2 />
         <HomeSection3 />
+        <MiddleBanner_2 />
       </div>
     </>
   );

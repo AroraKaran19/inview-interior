@@ -21,20 +21,50 @@ const MiddleBanner_1 = () => {
   //   handleAppear();
   // }, [])
 
+  const items = [
+    {
+      title: "On-Going Projects",
+      count: "10",
+    },
+    {
+      title: "Completed Projects",
+      count: "200",
+    },
+    {
+      title: "Happy Clients",
+      count: "134",
+    },
+    {
+      title: "Team Members",
+      count: "20+",
+    }
+  ]
+
   return (
     <>
-      <div className="middle-banner-1 bg-banner-1 bg-fixed bg-no-repeat bg-cover bg-right-bottom w-full flex justify-center items-center'">
-        <div className="middle-banner-1-container w-full flex flex-col justify-center items-center">
+      <div className="middle-banner-background-wrapper bg-banner-1 w-full">
+        <div className="middle-banner-1 bg-fixed bg-no-repeat bg-cover bg-right-bottom w-full flex justify-center items-center backdrop-blur-sm">
+          <div className="middle-banner-1-container w-full flex justify-center items-center">
 
-          <div className="middle-banner-1-container-content flex flex-col gap-2 justify-center items-center w-full">
-            <h1 className='heading text-center'>Best Interior Designer in Delhi!</h1>
-            <p className='subheading text-center'>Proudly transforming over 500 spaces into beautiful homes</p>
+            <div className="middle-banner-1-sub-container flex flex-col justify-center items-center gap-10 w-fit bg-white/20 rounded-2xl ">
+              <div className="middle-banner-1-container-content flex flex-col gap-2 justify-center items-center w-full mx-8 sm:mx-4 my-8 sm:my-4">
+                <h1 className='heading text-center'>Best Interior Designer in Delhi!</h1>
+                <p className='subheading text-center'>Proudly transforming over 500 spaces into beautiful homes</p>
+              </div>
+
+              <div className="middle-banner-1-container-content-2 flex justify-center items-center w-full gap-3 mx-8 sm:mx-4 my-8 sm:my-4">
+                {
+                  items.map((item) => (
+                    <div className="content-2-item" key={item.title}>
+                      <h1 className='heading text-center'>{item.count}</h1>
+                      <p className='subheading text-center'>{item.title}</p>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
           </div>
-
-          <div className="middle-banner-1-container-images flex justify-center items-center w-full">
-
-          </div>
-
         </div>
       </div>
     </>
