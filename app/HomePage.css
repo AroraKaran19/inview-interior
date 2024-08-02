@@ -168,8 +168,6 @@ section.home-hero-section .hero-text .arrow-down svg {
 .middle-banner-1 {
     min-height: clamp(15rem, 30vw, 25rem);
     padding: clamp(0rem, 5vw, 5rem);
-    backdrop-filter: blur(0.25rem);
-    -webkit-backdrop-filter: blur(0.25rem);
 }
 
 

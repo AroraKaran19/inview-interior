@@ -58,7 +58,7 @@ const config: Config = {
         fadeIn: "fadeIn 1s 2.5s ease-in-out forwards",
       },
       backgroundImage: {
-        'banner-1': "linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.1)), url('/HomeThirdSection1.jpg');",
+        'banner-1': "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.1)), url('/HomeThirdSection1.jpg');",
       },
     },
   },
