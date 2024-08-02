@@ -23,7 +23,7 @@ const MiddleBanner_1 = () => {
 
   const items = [
     {
-      title: "On-Going Projects",
+      title: "On Going Projects",
       count: "10",
     },
     {
@@ -43,19 +43,19 @@ const MiddleBanner_1 = () => {
   return (
     <>
       <div className="middle-banner-background-wrapper bg-banner-1 bg-fixed bg-no-repeat bg-cover bg-right-bottom w-full">
-        <div className="middle-banner-1 w-full flex justify-center items-center backdrop-blur-sm">
+        <div className="middle-banner-1 w-full flex justify-center items-center">
           <div className="middle-banner-1-container w-full flex justify-center items-center">
 
-            <div className="middle-banner-1-sub-container flex flex-col justify-center items-center gap-8 sm:gap-0 w-fit bg-white/20 rounded-2xl ">
+            <div className="middle-banner-1-sub-container flex flex-col justify-center items-center gap-8 sm:gap-0 w-fit rounded-2xl ">
               <div className="middle-banner-1-container-content flex flex-col gap-2 justify-center items-center w-full mx-8 sm:mx-0 my-8 sm:my-4">
                 <h1 className='heading text-center'>Best Interior Designer in Delhi!</h1>
                 <p className='subheading text-center'>Proudly transforming over 500 spaces into beautiful homes</p>
               </div>
 
-              <div className="middle-banner-1-container-content-2 flex sm:flex-col justify-center items-center w-full gap-3 mx-8 sm:mx-0 my-8 sm:my-4">
+              <div className="middle-banner-1-container-content-2 flex sm:flex-wrap justify-center items-center w-full gap-3 sm:gap-0 mx-8 sm:mx-0 my-8 sm:my-4 bg-white/20 rounded-2xl">
                 {
                   items.map((item) => (
-                    <div className="content-2-item sm:w-[90%]" key={item.title}>
+                    <div className="content-2-item flex-1 self-stretch flex flex-col justify-center items-center" key={item.title}>
                       <h1 className='heading text-center'>{item.count}</h1>
                       <p className='subheading text-center'>{item.title}</p>
                     </div>
