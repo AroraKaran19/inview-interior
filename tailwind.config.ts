@@ -14,7 +14,7 @@ const config: Config = {
       // => @media (max-width: 320px) { ... }
       'sm': {
         'min': '0px',
-        'max': '1200px' // Small devices (phones to tablets)
+        'max': '768px' // Small devices (phones to tablets)
       },
       // => @media (min-width: 321px) and (max-width: 768px) { ... }
       'md': {
