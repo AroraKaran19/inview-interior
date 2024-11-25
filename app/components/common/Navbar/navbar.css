@@ -1,0 +1,46 @@
+/* Fonts */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Navbar */
+
+.navbar {
+    height: clamp(80px, 10vw, 128px);
+    font-family: "Urbanist", sans-serif;
+}
+
+/* Main Nav */
+
+.navbar .main-nav .logo-container .logo .logo-text {
+    p:nth-child(1) {
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        line-height: 1;
+        font-weight: 500;
+        letter-spacing: 3px;
+    }
+    p:nth-child(2) {
+        font-size: clamp(1rem, 1.5vw, 1rem);
+        line-height: 1;
+    }
+}
+
+.navbar .main-nav .nav-links .navigation-link {
+    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+.navbar .main-nav .cu-cta-container .contact-btn {
+    font-size: 1rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+
+    &:hover {
+        color: white;
+
+        .hovered-bg {
+            height: 150%;
+            width: 100%;
+        }
+    }
+}
