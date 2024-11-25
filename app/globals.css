@@ -8,5 +8,5 @@
 
 @font-face {
     font-family: "Fixel Regular";
-    src: url("/fonts/FixelText-Regular.otf") format("truetype");
+    src: url("./fonts/FixelText-Regular.otf") format("truetype");
 }

@@ -5,17 +5,17 @@
 
 .home-page .home-hero-section .hero-section-left img:nth-child(1) {
     height: clamp(12rem, 20vw, 18.75rem);
-    aspect-ratio: 9/16;
+    aspect-ratio: 16/9;
     object-fit: cover;
 }
 .home-page .home-hero-section .hero-section-left img:nth-child(2) {
     height: clamp(20rem, 25vw, 29.75rem);
-    aspect-ratio: 9/16;
+    aspect-ratio: 16/9;
     object-fit: cover;
 }
 
 .home-page .home-hero-section .hero-section-center .hero-section-title h1 {
-    font-family: 'Fixel Regular', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(1.5rem, 5vw, 5.5rem);
     font-weight: 800;
     line-height: 1;
