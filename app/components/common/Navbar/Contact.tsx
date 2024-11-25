@@ -4,7 +4,7 @@ import React from "react";
 const Contact = () => {
   return (
     <>
-      <button className="contact-btn flex items-stretch gap-2 text-black border-black rounded-3xl border-2 px-6 py-2 relative transition-all duration-500 ease-in-out overflow-hidden">
+      <button className="contact-btn flex items-stretch gap-2 text-black border-black rounded-3xl border-2 relative transition-all duration-500 ease-in-out overflow-hidden">
         <div className="hovered-bg absolute top-1/2 left-1/2 h-0 w-0 bg-black -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ease-in-out rounded-full"></div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -10,6 +10,10 @@ const Logo = () => {
     <div
       className="logo flex items-stretch gap-2 cursor-pointer select-none"
       onClick={() => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        })
         router.push("/");
       }}
     >
@@ -21,7 +25,7 @@ const Logo = () => {
         draggable={false}
         className="h-[55px] w-auto place-self-center"
       />
-      <div className="logo-text flex flex-col items-center justify-center text-black sm:hidden">
+      <div className="logo-text flex flex-col items-center justify-center text-black">
         <p>INVIEW</p>
         <p>INTERIOR</p>
       </div>
