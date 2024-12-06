@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./components/common/Navbar/Navbar";
+import { createContext } from "vm";
 
 export const metadata: Metadata = {
   title: "Inview Interior",
@@ -12,11 +13,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const AlertContext = createContext([]);
+
   return (
     <html lang="en">
-      <body
-        className={`antialiased max-w-full`}
-      >
+      <body className={`antialiased max-w-full`}>
         <Navbar />
         <main className="max-w-full w-full min-h-screen">
           {children}

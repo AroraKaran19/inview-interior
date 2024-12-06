@@ -10,3 +10,8 @@
     font-family: "Fixel Regular";
     src: url("./fonts/FixelText-Regular.otf") format("truetype");
 }
+
+@font-face {
+    font-family: "Fixel Bold";
+    src: url("./fonts/FixelText-Bold.otf") format("truetype");
+}

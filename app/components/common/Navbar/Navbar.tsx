@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import "./navbar.css";
-import NavLinks from "./NavLinks";
-import Contact from "./Contact";
+import NavLinks from "./components/NavLinks";
+import Contact from "./components/Contact";
 import Logo from "../Logo";
-import HamburgerBtn from "./HamburgerBtn";
+import HamburgerBtn from "./components/HamburgerBtn";
 
 const Navbar = () => {
 

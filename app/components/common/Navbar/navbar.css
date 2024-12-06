@@ -25,7 +25,7 @@
     font-family: "Inter", sans-serif;
 }
 
-.navbar .main-nav .cu-cta-container .contact-btn {
+.contact-btn {
     padding: clamp(0.1rem, 2vw, 0.5rem) clamp(0.1rem, 2vw, 1.5rem);
     font-size: 1rem;
     font-family: "Inter", sans-serif;
