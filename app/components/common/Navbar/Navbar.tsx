@@ -9,7 +9,6 @@ import HamburgerBtn from "./components/HamburgerBtn";
 const Navbar = () => {
 
   const [menuOpen, setMenuOpen] = useState<boolean>(false);
-  const [shadow, setShadow] = useState<boolean>(false);
 
   const navLinks = [
     {

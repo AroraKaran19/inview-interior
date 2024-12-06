@@ -2,6 +2,7 @@
 import { categoryData } from "@/app/utils/categories";
 import React, { useEffect, useState } from "react";
 import CopyBtn from "./CopyBtn";
+import { useRouter } from "next/navigation";
 
 const CategoryContent = ({
   categoryName,
@@ -10,8 +11,10 @@ const CategoryContent = ({
   categoryName: string;
   className?: string;
 }) => {
+
   const [data, setData] = useState<any[]>([]);
   const [loadedImages, setLoadedImages] = useState<number>(5);
+  const router = useRouter();
 
   useEffect(() => {
     if (categoryName === "All") {
@@ -23,10 +26,12 @@ const CategoryContent = ({
   }, [categoryName]);
 
   const loadMoreImages = () => {
-    if (loadedImages + 4 < data.length) {
-      setLoadedImages(loadedImages + 4);
-    } else {
-      setLoadedImages(data.length);
+    if (loadedImages < 8) {
+      if (loadedImages + 4 < data.length) {
+        setLoadedImages(loadedImages + 4);
+      } else {
+        setLoadedImages(data.length);
+      }
     }
   };
 
@@ -82,17 +87,40 @@ const CategoryContent = ({
           </div>
           <div className="category-item-title absolute bottom-5 left-5 bg-white text-black p-2 rounded-xl max-w-[50%]">
             {item.redirect}
-					</div>
+          </div>
           <CopyBtn item={item} index={index} data={data} send={setData} />
         </div>
       ))}
-      {loadedImages < data.length && (
+      {loadedImages < 8 ? (
         <div className="load-more w-full flex justify-center">
           <button
             className="load-more-btn py-2 px-4 bg-black text-white rounded-lg"
             onClick={loadMoreImages}
           >
             Load More
+          </button>
+        </div>
+      ) : (
+        <div className="load-more w-full flex justify-center">
+          <button
+            className="load-more-btn py-2 px-4 bg-black text-white rounded-lg flex gap-2 justify-center items-center"
+            onClick={() => { router.push("/categories"); }}
+          >
+            <span>View More</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17.25 8.25 21 12m0 0-3.75 3.75M21 12H3"
+              />
+            </svg>
           </button>
         </div>
       )}

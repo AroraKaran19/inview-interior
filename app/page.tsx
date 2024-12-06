@@ -5,7 +5,7 @@ import "./components/home.css";
 export default function Home() {
   return (
     <>
-      <div className="home-page flex gap-5 flex-col w-full">
+      <div className="home-page flex gap-5 flex-col w-full overflow-hidden">
         <HeroSection />
         <CateogoriesSection />
       </div>
