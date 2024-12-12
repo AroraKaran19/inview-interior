@@ -3,7 +3,7 @@
   padding: 0 clamp(1rem, 5vw, 5rem);
 }
 
-.section-heading h1 {
+.section-heading h2 {
   font-family: "Fixel Bold", sans-serif;
   font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 800;
@@ -191,21 +191,9 @@
   animation: swipeFromLeft 0.5s ease-in-out forwards;
 }
 
-@keyframes CardAppear {
-  0% {
-    opacity: 0;
-    transform: translateY(-20%);
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.home-page .categories-section .category-content .category-item {
+.home-page .categories-section .category-content > .category-item {
   height: clamp(15rem, 25vw, 30rem);
-  transition: all 0.5s ease-in-out;
-  animation: CardAppear 0.5s ease-in-out forwards;
+  transition: all 0.6s ease-in-out;
 }
 
 @keyframes appearFromBelow {

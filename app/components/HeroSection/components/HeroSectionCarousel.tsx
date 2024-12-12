@@ -10,6 +10,7 @@ interface HeroSectionCarouselProps {
   interval?: number;
   autoChange?: boolean;
 	scrollbar?: boolean;
+  style?: {};
 }
 
 const HeroSectionCarousel = ({
@@ -18,6 +19,7 @@ const HeroSectionCarousel = ({
   interval,
   autoChange,
 	scrollbar,
+  style,
 }: HeroSectionCarouselProps) => {
   const CarouselRef = useRef<HTMLDivElement | null>(null);
   interval = interval || 5000;
@@ -59,7 +61,7 @@ const HeroSectionCarousel = ({
     <>
       <div
         className={`hero-section-carousel w-4/5 flex items-stretch gap-8 overflow-x-scroll snap-x snap-center snap-mandatory ${className} relative ${scrollbar ? "scrollbar" : ""}`}
-        ref={CarouselRef}
+        ref={CarouselRef} style={style}
       >
         {interiorItems.map((item, index) => (
           <div

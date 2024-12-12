@@ -1,8 +1,10 @@
 "use client";
 import { categoryData } from "@/app/utils/categories";
-import React, { useEffect, useState } from "react";
-import CopyBtn from "./CopyBtn";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import CategoryItem from "./CategoryItem";
+import CategoryCarousel from "./CategoryCarousel";
+import ItemContainerCloseBtn from "./ItemContainerCloseBtn";
 
 const CategoryContent = ({
   categoryName,
@@ -11,10 +13,15 @@ const CategoryContent = ({
   categoryName: string;
   className?: string;
 }) => {
-
+  const containerRef = useRef<HTMLDivElement>(null);
   const [data, setData] = useState<any[]>([]);
   const [loadedImages, setLoadedImages] = useState<number>(5);
+  const [showDetails, setShowDetails] = useState<boolean>(false);
   const router = useRouter();
+  const totalItems =
+    categoryName == "All"
+      ? categoryData.length
+      : categoryData.filter((item) => item.tag === categoryName).length;
 
   useEffect(() => {
     if (categoryName === "All") {
@@ -22,18 +29,9 @@ const CategoryContent = ({
     } else {
       setData(categoryData.filter((item) => item.tag === categoryName));
     }
-    setLoadedImages(4);
+    setLoadedImages(totalItems > 8 ? 8 : 4);
+    setShowDetails(false);
   }, [categoryName]);
-
-  const loadMoreImages = () => {
-    if (loadedImages < 8) {
-      if (loadedImages + 4 < data.length) {
-        setLoadedImages(loadedImages + 4);
-      } else {
-        setLoadedImages(data.length);
-      }
-    }
-  };
 
   useEffect(() => {
     if (data.filter((item) => item.shareCopy === true)) {
@@ -51,60 +49,89 @@ const CategoryContent = ({
     }
   }, [data]);
 
+  const handleDetailsClose = () => {
+    const changeData = [...data];
+    changeData.map((item) => {
+      item.showDetails = false;
+      item.Details = false;
+    });
+    setData(changeData);
+    setShowDetails(false);
+  };
+
   return (
     <div
-      className={`category-content w-full flex flex-wrap gap-4 justify-center p-4 px-8 sm:px-0 ${className}`}
+      className={`category-content w-full relative flex flex-wrap gap-4 justify-center p-4 px-8 sm:px-0 ${className}`}
+      ref={containerRef}
     >
-      {data.slice(0, loadedImages).map((item, index) => (
+      <div
+        className={`category-wrapper absolute flex justify-center items-center w-full h-full top-0 p-4 px-8 transition-all duration-300 ease-in-out z-50 sm:p-0 ${
+          showDetails
+            ? "bg-white/30 backdrop-blur-sm pointer-events-auto"
+            : "pointer-events-none"
+        }`}
+      >
         <div
-          key={index}
-          className="category-item w-[calc(100%/4-16px)] relative rounded-3xl overflow-hidden sm:w-full md:w-[calc(100%/2-32px)] lg:w-[calc(100%/3-16px)]"
+          className={`item-container w-11/12 h-4/5 p-5 bg-white/75 animate-CardsInFromLeft sm:w-full sm:pt-5 ${
+            showDetails ? "flex sm:flex-col" : "hidden"
+          }`}
         >
-          <img
-            src={item.image}
-            alt={item.tag}
-            className="w-full h-full object-cover select-none"
-            draggable={false}
-          />
-          <div className="details-btn bg-white/70 backdrop-blur-sm text-black absolute top-5 left-5 py-2 px-5 rounded-xl cursor-pointer select-none">
-            LEARN DETAILS
+          <div className="item-container-left w-1/2 h-full overflow-hidden sm:w-full sm:h-1/3">
+            {data
+              .filter((item) => item.showDetails == true)
+              .map((item, index) => {
+                return (
+                  <CategoryCarousel
+                    key={index}
+                    carouselItems={item.list_images}
+                    autoChange={true}
+                  />
+                );
+              })}
           </div>
-          <div className="redirect-btn bg-white text-black absolute top-2 right-2 p-4 rounded-full cursor-pointer select-none">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="m8.25 4.5 7.5 7.5-7.5 7.5"
-              />
-            </svg>
+          <div className="item-container-right w-1/2 h-full relative sm:w-full sm:h-1/3">
+            <ItemContainerCloseBtn handleDetailsClose={handleDetailsClose} />
+            {data
+              .filter((item) => item.showDetails == true)
+              .map((item, index) => {
+                return (
+                  <Fragment key={index}>
+                    <h3 className="item-container-heading text-center text-3xl">{item.tag}</h3>
+                  </Fragment>
+                );
+              })}
           </div>
-          <div className="category-item-title absolute bottom-5 left-5 bg-white text-black p-2 rounded-xl max-w-[50%]">
-            {item.redirect}
-          </div>
-          <CopyBtn item={item} index={index} data={data} send={setData} />
         </div>
+      </div>
+      {data.slice(0, loadedImages).map((item, index) => (
+        <CategoryItem
+          key={index}
+          item={item}
+          index={index}
+          setShowDetails={setShowDetails}
+          data={data}
+          setData={setData}
+          className="animate-CardsIn"
+        />
       ))}
-      {loadedImages < 8 ? (
+      {loadedImages < totalItems && loadedImages < 12 ? (
         <div className="load-more w-full flex justify-center">
           <button
             className="load-more-btn py-2 px-4 bg-black text-white rounded-lg"
-            onClick={loadMoreImages}
+            onClick={() => {
+              setLoadedImages(loadedImages + 4);
+            }}
           >
             Load More
           </button>
         </div>
-      ) : (
-        <div className="load-more w-full flex justify-center">
+      ) : loadedImages < totalItems ? (
+        <div className="view-all w-full flex justify-center">
           <button
-            className="load-more-btn py-2 px-4 bg-black text-white rounded-lg flex gap-2 justify-center items-center"
-            onClick={() => { router.push("/categories"); }}
+            className="view-all-btn py-2 px-4 bg-black text-white rounded-lg flex gap-2 justify-center items-center"
+            onClick={() => {
+              router.push("/categories");
+            }}
           >
             <span>View More</span>
             <svg
@@ -123,7 +150,7 @@ const CategoryContent = ({
             </svg>
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

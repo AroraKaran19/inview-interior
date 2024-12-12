@@ -35,6 +35,20 @@ export default {
       backgroundImage: {
         'contact-hover': 'linear-gradient(#000000, #000000);',
       },
+      keyframes: {
+        "CardAppear": {
+          '0%': { opacity: '0', transform: "translateY(-20%)" },
+          '100%': { transform: "translateY(0)", opacity: "1" }
+        },
+        "CardAppearFromLeft": {
+          '0%': { opacity: '0', transform: "translateX(-20%)" },
+          '100%': { transform: "translateX(0)", opacity: "1" }
+        },
+      },
+      animation: {
+        "CardsIn": "CardAppear 0.5s ease-in-out forwards",
+        "CardsInFromLeft": "CardAppearFromLeft 0.5s ease-in-out forwards",
+      }
     },
   },
   plugins: [],
