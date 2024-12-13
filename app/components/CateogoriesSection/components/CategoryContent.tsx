@@ -72,7 +72,7 @@ const CategoryContent = ({
         }`}
       >
         <div
-          className={`item-container w-11/12 h-4/5 p-5 bg-white/75 animate-CardsInFromLeft sm:w-full sm:pt-5 ${
+          className={`item-container w-11/12 h-full p-5 bg-white/75 animate-CardsInFromLeft max-h-[600px] sm:w-full sm:pt-5 ${
             showDetails ? "flex sm:flex-col" : "hidden"
           }`}
         >
@@ -96,7 +96,8 @@ const CategoryContent = ({
               .map((item, index) => {
                 return (
                   <Fragment key={index}>
-                    <h3 className="item-container-heading text-center text-3xl">{item.tag}</h3>
+                    <h3 className="item-container-heading text-center text-3xl select-none">{item.tag}</h3>
+                    <p className="item-container-description text-center text-lg select-none">{item.description}</p>
                   </Fragment>
                 );
               })}

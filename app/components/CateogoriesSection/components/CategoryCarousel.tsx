@@ -41,10 +41,10 @@ const CategoryCarousel = ( { carouselItems, className, style, interval=5000, aut
   }, [interval, autoChange]);
 
   return (
-		<div className={`category-item-carousel flex overflow-x-scroll w-full h-full items-stretch gap-2 snap-x snap-center snap-mandatory ${className}`} ref={itemCarouselRef} style={style}>
+		<div className={`category-item-carousel flex overflow-x-scroll w-full h-full items-stretch gap-2 snap-center ${className}`} ref={itemCarouselRef} style={{...style, scrollSnapType: "x mandatory", scrollbarWidth: "none", msOverflowStyle: "none", scrollbarColor: "transparent transparent"}}>
 			{carouselItems.map((imageUrl, index) => {
 				return (
-					<div key={index} className="carousel-image w-full h-full flex-shrink-0" style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: "100% 100%", backgroundSize: "cover", backgroundRepeat: "no-repeat"}}></div>
+					<div key={index} className="carousel-image w-full h-full flex-shrink-0 select-none" draggable={false} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: "100% 100%", backgroundSize: "cover", backgroundRepeat: "no-repeat"}}></div>
 				)
 			})}
 		</div>

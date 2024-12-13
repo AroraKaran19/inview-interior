@@ -38,6 +38,18 @@ const CategoryItem = ({
       setShowDetails(false);
     }
     setData(newData);
+
+    setTimeout(() => {
+      if (newData[index].showDetails) {
+        const itemContainer = document.querySelector(".item-container");
+        if (itemContainer) {
+          itemContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }
+      }
+    }, 0);
   };
 
   return (
@@ -58,6 +70,7 @@ const CategoryItem = ({
             : "bg-white/70 backdrop-blur-sm text-black"
         }`}
         onClick={() => handleDetails(index)}
+        title={`Get Details of ${item.tag}`}
       >
         LEARN DETAILS
       </div>
@@ -65,7 +78,7 @@ const CategoryItem = ({
       <div className="category-item-title absolute bottom-5 left-5 bg-white text-black p-2 rounded-xl max-w-[50%]">
         {item.redirect}
       </div>
-      <CopyBtn item={item} index={index} data={data} send={setData} />
+      <CopyBtn item={item} index={index} data={data} send={setData} title="Copy Link to Clipboard" />
     </div>
   );
 };

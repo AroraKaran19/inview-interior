@@ -5,11 +5,13 @@ const CopyBtn = ({
   index,
   data,
   send,
+  title,
 }: {
   item: any;
   index: number;
   data: any[];
   send: (value: any[]) => void;
+  title?: string;
 }) => {
   return (
     <div
@@ -19,6 +21,7 @@ const CopyBtn = ({
         newData[index].shareCopy = !newData[index].shareCopy;
         send(newData);
       }}
+      title={title}
     >
       {!item.shareCopy ? (
         <svg
