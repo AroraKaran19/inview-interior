@@ -30,6 +30,9 @@ const CategoryContent = ({
       setData(categoryData.filter((item) => item.tag === categoryName));
     }
     setLoadedImages(totalItems > 8 ? 8 : 4);
+    // Only to be used to persist images from db or within same cateogory
+    // const showDetailsFlag = categoryData.filter((item) => categoryName == "All" ? item : item.tag === categoryName).some((item) => item.showDetails ? item.showDetails === true : false);
+    // setShowDetails(showDetailsFlag); // uncomment this to use and comment below line
     setShowDetails(false);
   }, [categoryName]);
 

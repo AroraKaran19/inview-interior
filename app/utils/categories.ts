@@ -19,7 +19,7 @@ export class ItemCategory {
   }
 }
 
-export const categoryData = [
+export const categoryData : ItemCategory[] = [
   {
     tag: "Bedroom",
     image: "/category/category1.jpg",

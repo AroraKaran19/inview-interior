@@ -1,0 +1,25 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .grid-item {
+    background-color: #e0e0e0;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .emerge-container {
+    background-color: white;
+    padding: 40px;
+    z-index: 100;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  

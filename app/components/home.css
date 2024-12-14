@@ -162,6 +162,27 @@
   display: block;
 }
 
+/* Company Info Section */
+
+.home-page .company-info-section .info-item-container .info-item-heading {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+}
+
+.home-page .company-info-section .info-item-container .info-item-count {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: clamp(0.25rem, 5vw, 0.5rem);
+}
+
+/* Category Section */
+
 @keyframes swipeFromLeft {
   0% {
     opacity: 0;
