@@ -50,7 +50,7 @@ const HeroSection = () => {
         <HeroSectionCarousel
           interiorItems={interiorItems}
           autoChange={true}
-          className="hidden sm:flex"
+          className="hidden w-full sm:flex"
         />
 
         <div className="hero-section-subtitle w-3/5 text-center">

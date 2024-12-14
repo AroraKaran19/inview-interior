@@ -19,17 +19,18 @@ const CompanyInfoSection = () => {
       heading: "Satisfied Clients",
       count: 550,
       name: "clients",
+      duration: 1,
     },
     {
       heading: "Projects Completed",
       count: 400,
       name: "projects",
+      duration: 1,
     },
     {
       heading: "Satisfied Client Rating",
       count: 4.5,
       decimal: true,
-      duration: 1,
       name: "rating",
     },
   ]);

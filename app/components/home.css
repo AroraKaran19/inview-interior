@@ -164,6 +164,50 @@
 
 /* Company Info Section */
 
+@keyframes InfoFromLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes InfoFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50%) scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+@keyframes InfoFromCenter {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.home-page .company-info-section .info-item-container {
+  transition: all 0.6s ease-in-out;
+}
+.home-page .company-info-section .info-item-container:nth-child(1) {
+  animation: InfoFromLeft 1s ease-in-out forwards;
+}
+.home-page .company-info-section .info-item-container:nth-child(2) {
+  animation: InfoFromCenter 1s ease-in-out forwards;
+}
+.home-page .company-info-section .info-item-container:nth-child(3) {
+  animation: InfoFromRight 1s ease-in-out forwards;
+}
+
 .home-page .company-info-section .info-item-container .info-item-heading {
   font-family: "Inter", sans-serif;
   font-size: clamp(1.5rem, 5vw, 2.5rem);
