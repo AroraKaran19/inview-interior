@@ -52,8 +52,7 @@ const CompanyInfoSection = () => {
                 decimal={item.decimal}
                 duration={item.duration}
               />
-              {item.name == "rating" ? <Star className="size-8 aspect-square sm:size-4" /> : null}
-              <span>+</span>
+              {item.name == "rating" ? <Star className="size-8 aspect-square sm:size-4" /> : <span>+</span>}
             </div>
             <p className="info-item-heading">{item.heading}</p>
           </div>
