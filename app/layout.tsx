@@ -16,9 +16,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
-        <meta name="trustpilot-one-time-domain-verification-id" content={process.env.TRUSTPILOT_CONTENT}/>
-      </Head>
+      <head>
+        <meta name="trustpilot-one-time-domain-verification-id" content="3afbc132-fd64-43c6-9f8e-c3d6a825eb0d"/>
+      </head>
       <body className={`antialiased max-w-full`}>
         <Navbar />
         <main className="max-w-full w-full min-h-screen">
